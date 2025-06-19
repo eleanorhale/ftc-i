@@ -110,7 +110,7 @@ color:rgb(244, 67, 54);
 
         <script>
 
-        async function browserN() {
+        function browserN() {
   if ((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1) {
     return 'Opera';
   } else if (navigator.userAgent.indexOf("Edg") != -1) {
@@ -130,7 +130,7 @@ color:rgb(244, 67, 54);
 }
 
 
-        async function fetch_ip(){
+        function fetch_ip(){
           let ajax = new XMLHttpRequest();
           if(ajax!=null){
               ajax.open("GET","https://europe-west3-devrcc.cloudfunctions.net/whatismyip",true);
@@ -158,6 +158,7 @@ color:rgb(244, 67, 54);
 
 
         console.log(get_ip);
+        console.log(get_browsername);
 
 
 
