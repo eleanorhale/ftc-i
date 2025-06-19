@@ -130,12 +130,13 @@ color:rgb(244, 67, 54);
   }
 }
 
+        const get_ip = null;
 
         function fetch_ip(){
           $.getJSON("https://api.ipify.org?format=json", function(data) {
-              return data.ip;
+              get_ip =  data.ip;
           });
-                return 'unknown';
+
         }
 
 
@@ -144,8 +145,10 @@ color:rgb(244, 67, 54);
 
 
         const provider = "FTC-I.NET(https://ftc.net)";
-        const get_ip = fetch_ip();
+        fetch_ip();
         const get_browsername = browserN();
+
+        alert(get_ip);
 
 
 
