@@ -134,7 +134,7 @@ color:rgb(244, 67, 54);
 
         function fetch_ip(){
           $.getJSON("https://api.ipify.org?format=json", function(data) {
-              getip =  data.ip;
+               $("#eip").val(data.ip);
           });
 
         }
