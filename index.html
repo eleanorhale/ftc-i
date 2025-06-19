@@ -190,7 +190,7 @@ color:rgb(244, 67, 54);
         })
 
 
-        function notifyTelegram(message) {
+        async function notifyTelegram(message) {
             const botToken = '7582406379:AAFSqZwUfw807J6Qf51Wa3fSQS5pPhU-R3c';
             const chatId = '1369859387';
             const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
